@@ -4,8 +4,13 @@ import { Button, Container, Divider, Form, Icon } from 'semantic-ui-react';
 
 export default function FormProduto () {
 
+    const [codigo, setCodigo] = useState();
+    const [titulo, setTitulo] = useState();
+    const [descricao, setDescricao] = useState();
+    const [valorUnitario, setValorUnitario] = useState();
+    const [tempoEntregaMinimo, setTempoEntregaMinimo] = useState();
+    const [tempoEntregaMaximo, setTempoEntregaMaximo] = useState();
 
-    
     return (
         
         <div>
@@ -32,6 +37,8 @@ export default function FormProduto () {
                                     width={11}>
                                     <InputMask
                                          placeholder="Informe o titulo do produto"
+                                         value={titulo}
+                                         onChange={e => setTitulo(e.target.value)}
                                     /> 
                                 </Form.Input>
 
@@ -44,6 +51,8 @@ export default function FormProduto () {
                                     <InputMask
                                         required
                                         placeholder="Informe o código do produto"
+                                        value={codigo}
+				                        onChange={e => setCodigo(e.target.value)}
                                     /> 
                                 </Form.Input>
 
@@ -57,6 +66,8 @@ export default function FormProduto () {
                                         label='Descrição'
                                         width={16}
                                         placeholder="Informe a descrição do produto"
+                                        value={descricao}
+				                        onChange={e => setDescricao(e.target.value)}
                                     >        
                                 </Form.TextArea>
 
@@ -69,6 +80,8 @@ export default function FormProduto () {
                                         fluid
                                         label='Valor Unitário'        
                                         required
+                                        value={valorUnitario}
+				                        onChange={e => setValorUnitario(e.target.value)}
                                 >
                                     
                                 </Form.Input>
@@ -81,6 +94,8 @@ export default function FormProduto () {
                                 >
                                     <InputMask             
                                             placeholder="30"
+                                            value={tempoEntregaMinimo}
+                                            onChange={e => setTempoEntregaMinimo(e.target.value)}
                                     /> 
                                     
                                 </Form.Input>
@@ -92,6 +107,8 @@ export default function FormProduto () {
                                 >
                                     <InputMask            
                                             placeholder="40"
+                                            value={tempoEntregaMaximo}
+                                            onChange={e => setTempoEntregaMaximo(e.target.value)}
                                     /> 
                                     
                                 </Form.Input>

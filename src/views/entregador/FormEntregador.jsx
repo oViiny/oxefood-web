@@ -4,7 +4,22 @@ import { Button, Container, Divider, Form, Icon } from 'semantic-ui-react';
 
 export default function FormEntregador () {
 
-
+    const [nome, setNome] = useState();
+    const [cpf, setCpf] = useState();
+    const [rg, setRg] = useState();
+    const [dataNascimento, setDataNascimento] = useState();
+    const [foneCelular, setFoneCelular] = useState();
+    const [foneFixo, setFoneFixo] = useState();
+    const [qtdEntregasRealizadas, setQtdEntregasRealizadas] = useState();
+    const [valorFrete, setValorFrete] = useState();
+    const [enderecoRua, setEnderecoRua] = useState();
+    const [enderecoNumero, setEnderecoNumero] = useState();
+    const [enderecoBairro, setEnderecoBairro] = useState();
+    const [enderecoCidade, setEnderecoCidade] = useState();
+    const [enderecoCep, setEnderecoCep] = useState();
+    const [enderecoUf, setEnderecoUf] = useState();
+    const [enderecoComplemento, setEnderecoComplemento] = useState();
+    const [ativo, setAtivo] = useState();
     
     return (
         
@@ -33,6 +48,8 @@ export default function FormEntregador () {
                                     width={10}>
                                     <InputMask
                                          placeholder="Ex: Vinicius Rodrigues Ferreira"
+                                         value={nome}
+                                         onChange={e => setNome(e.target.value)}
                                     /> 
                                 </Form.Input>
 
@@ -45,6 +62,8 @@ export default function FormEntregador () {
                                     <InputMask    
                                         mask="999.999.999-99"
                                         placeholder="Ex: 124.905.409-73"
+                                        value={cpf}
+				                        onChange={e => setCpf(e.target.value)}
                                     /> 
                                 </Form.Input>
 
@@ -55,6 +74,8 @@ export default function FormEntregador () {
                                     <InputMask
                                         mask="99.999-999"
                                         placeholder="Ex: 12.304-078"
+                                        value={rg}
+				                        onChange={e => setRg(e.target.value)}
                                     /> 
                                 </Form.Input>
 
@@ -71,6 +92,8 @@ export default function FormEntregador () {
                                             mask="99/99/9999" 
                                             maskChar={null}
                                             placeholder="Ex: 20/03/1985"
+                                            value={dataNascimento}
+                                            onChange={e => setDataNascimento(e.target.value)}
                                         /> 
                                     </Form.Input>
 
@@ -81,6 +104,8 @@ export default function FormEntregador () {
                                         <InputMask 
                                             mask="(99) 99999.9999"
                                             placeholder="Ex: (81) 98342.3967"
+                                            value={foneCelular}
+                                            onChange={e => setFoneCelular(e.target.value)}
                                         /> 
                                     </Form.Input>
 
@@ -91,6 +116,8 @@ export default function FormEntregador () {
                                         <InputMask 
                                             mask="(99) 99999.9999"
                                             placeholder="Ex: (81) 98342.3967"
+                                            value={foneFixo}
+                                            onChange={e => setFoneFixo(e.target.value)}
                                         /> 
                                     </Form.Input>
 
@@ -98,14 +125,20 @@ export default function FormEntregador () {
                                         fluid
                                         label='QTD Entregas Realizadas'
                                         placeholder="Ex: 15"
-                                        width={4}>
+                                        width={4}
+                                        value={qtdEntregasRealizadas}
+				                        onChange={e => setQtdEntregasRealizadas(e.target.value)}>
+                                            
                                        
                                     </Form.Input>
                                     <Form.Input
                                         fluid
                                         label='Valor Por Frete'
                                         placeholder="Ex: 4.99"
-                                        width={4}>
+                                        width={4}
+                                        value={valorFrete}
+				                        onChange={e => setValorFrete(e.target.value)}
+                                        >
                                        
                                     </Form.Input>
                             </Form.Group>
@@ -121,6 +154,8 @@ export default function FormEntregador () {
                                             
                                             maskChar={null}
                                             placeholder="Ex: Vasconcelos"
+                                            value={enderecoRua}
+                                            onChange={e => setEnderecoRua(e.target.value)}
                                         /> 
                                     </Form.Input>
 
@@ -130,6 +165,8 @@ export default function FormEntregador () {
                                         width={4}>
                                         <InputMask 
                                             placeholder="Ex: 15"
+                                            value={enderecoNumero}
+                                            onChange={e => setEnderecoNumero(e.target.value)}
                                         /> 
                                     </Form.Input>
                             </Form.Group>
@@ -143,6 +180,8 @@ export default function FormEntregador () {
                                         <InputMask       
                                             maskChar={null}
                                             placeholder="Ex: Bulhões"
+                                            value={enderecoBairro}
+                                            onChange={e => setEnderecoBairro(e.target.value)}
                                         /> 
                                     </Form.Input>
 
@@ -152,6 +191,8 @@ export default function FormEntregador () {
                                         width={7}>
                                         <InputMask 
                                             placeholder="Ex: Jaboatão dos Guararapes"
+                                            value={enderecoCidade}
+                                            onChange={e => setEnderecoCidade(e.target.value)}
                                         /> 
                                     </Form.Input>
 
@@ -161,6 +202,8 @@ export default function FormEntregador () {
                                         width={3}>
                                         <InputMask 
                                             placeholder="Ex: 54080204"
+                                            value={enderecoCep}
+                                            onChange={e => setEnderecoCep(e.target.value)}
                                         /> 
                                     </Form.Input>
 
@@ -177,6 +220,8 @@ export default function FormEntregador () {
                                                 { key: 'PB', text: 'PB', value: 'PB' },
                                     
                                             ]}
+                                            value={enderecoCep}
+                                            onChange={e => setEnderecoCep(e.target.value)}
                                     >
                                         
                                     </Form.Dropdown>
@@ -193,6 +238,8 @@ export default function FormEntregador () {
                                     >
                                     <InputMask 
                                         placeholder="Ex: Casa"
+                                        value={enderecoComplementoC}
+                                        onChange={e => setEnderecoComplemento(e.target.value)}
                                     /> 
                                      
                             </Form.Input>
@@ -206,12 +253,14 @@ export default function FormEntregador () {
                                     <Form.Radio
                                         label='Sim'
                                         value='sim'
-                                        checked={true}
+                                        checked={ativo}
+                                        onChange={e => setAtivo(true)}
                                     />
                                     <Form.Radio
                                         label='Não'
                                         value='nao'
-                                        checked={false}
+                                        checked={!ativo}
+                                        onChange={e => setAtivo(true)}
                                     />
                             </Form.Group>
                         </Form>
