@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import InputMask from 'react-input-mask';
+import { Link } from "react-router-dom";
 import axios from "axios";
+import MenuSistema from '../../MenuSistema';
 import { Button, Container, Divider, Form, Icon } from 'semantic-ui-react';
 
 export default function FormCliente () {
@@ -34,7 +36,7 @@ export default function FormCliente () {
     return (
 
         <div>
-
+            <MenuSistema tela={'cliente'} />
             <div style={{marginTop: '3%'}}>
 
                 <Container textAlign='justified' >
@@ -119,31 +121,28 @@ export default function FormCliente () {
                         </Form>
                         
                         <div style={{marginTop: '4%'}}>
-
-                            <Button
-                                type="button"
-                                inverted
-                                circular
-                                icon
-                                labelPosition='left'
-                                color='orange'
+                        <Button
+                            inverted
+                            circular
+                            icon
+                            labelPosition='left'
+                            color='orange'
                             >
-                                <Icon name='reply' />
-                                Voltar
-                            </Button>
-                                
-                            <Button
-                                inverted
-                                circular
-                                icon
-                                labelPosition='left'
-                                color='blue'
-                                floated='right'
-                                onClick={() => salvar()}
-                            >
-                                <Icon name='save' />
+                            <Icon name='reply' />
+                            <Link to={'/list-cliente'}>Voltar</Link>
+                        </Button>                               
+                        <Button
+                            inverted
+                            circular
+                            icon
+                            labelPosition='left'
+                            color='blue'
+                            floated='right'
+                            onClick={() => salvar()}
+                        >
+                            <Icon name='save' />
                                 Salvar
-                            </Button>
+                        </Button>
 
                         </div>
 

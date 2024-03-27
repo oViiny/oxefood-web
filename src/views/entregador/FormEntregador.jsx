@@ -1,5 +1,6 @@
 import {React, useState} from "react";
 import InputMask from 'react-input-mask';
+import MenuSistema from '../../MenuSistema';
 import { Button, Container, Divider, Form, Icon } from 'semantic-ui-react';
 
 export default function FormEntregador () {
@@ -25,7 +26,7 @@ export default function FormEntregador () {
         
 
         <div>
-
+            <MenuSistema tela={'cliente'} />
             <div style={{marginTop: '3%'}}>
 
                 <Container textAlign='justified' >
@@ -238,7 +239,7 @@ export default function FormEntregador () {
                                     >
                                     <InputMask 
                                         placeholder="Ex: Casa"
-                                        value={enderecoComplementoC}
+                                        value={enderecoComplemento}
                                         onChange={e => setEnderecoComplemento(e.target.value)}
                                     /> 
                                      

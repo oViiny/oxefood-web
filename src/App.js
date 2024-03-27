@@ -1,5 +1,6 @@
 import { Segment } from 'semantic-ui-react';
 import './App.css';
+import Rotas from './Rotas';
 import FormCliente from './views/cliente/FormCliente';
 
 function App() {
@@ -7,8 +8,8 @@ function App() {
  return (
 
    <div className="App">
+      <Rotas />
     
-     <FormCliente />
 
      <div style={{marginTop: '6%'}}>
        <Segment vertical color='grey' size='tiny' textAlign='center'>

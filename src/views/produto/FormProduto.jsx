@@ -1,5 +1,6 @@
 import {React, useState} from "react";
 import InputMask from 'react-input-mask';
+import MenuSistema from '../../MenuSistema';
 import { Button, Container, Divider, Form, Icon } from 'semantic-ui-react';
 
 export default function FormProduto () {
@@ -16,7 +17,7 @@ export default function FormProduto () {
         <div>
 
             <div style={{marginTop: '3%'}}>
-
+            <MenuSistema tela={'cliente'} />
                 <Container textAlign='justified' >
 
                     <h2> <span style={{color: 'darkgray'}}> Produto &nbsp;<Icon name='angle double right' size="small" /> </span> Cadastro </h2>
