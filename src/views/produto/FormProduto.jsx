@@ -1,9 +1,13 @@
-import {React, useState} from "react";
+import axios from "axios";
+import React, { useEffect, useState } from "react";
 import InputMask from 'react-input-mask';
-import MenuSistema from '../../MenuSistema';
+import { Link, useLocation } from "react-router-dom";
 import { Button, Container, Divider, Form, Icon } from 'semantic-ui-react';
+import MenuSistema from '../../MenuSistema';
 
 export default function FormProduto () {
+    const { state } = useLocation();
+    const [idProduto, setIdProduto] = useState();
 
     const [codigo, setCodigo] = useState();
     const [titulo, setTitulo] = useState();
@@ -12,15 +16,65 @@ export default function FormProduto () {
     const [tempoEntregaMinimo, setTempoEntregaMinimo] = useState();
     const [tempoEntregaMaximo, setTempoEntregaMaximo] = useState();
 
+
+    useEffect(() => {
+        if (state != null && state.id != null) {
+            axios.get("http://localhost:8080/api/produto/" + state.id)
+    .then((response) => {
+                        setIdProduto(response.data.id)
+                        setCodigo(response.data.codigo)
+                        setTitulo(response.data.titulo)
+                        setDescricao(response.data.descricao)
+                        setValorUnitario(response.data.valorUnitario)
+                        setTempoEntregaMaximo(response.data.tempoEntregaMaximo)
+                        setTempoEntregaMinimo(response.data.tempoEntregaMinimo)
+            })
+        }
+    }, [state])
+
+    
+    function salvar() {
+
+
+        let produtoRequest = {
+            codigo: codigo,
+            titulo: titulo,
+            descricao: descricao,
+            valorUnitario: valorUnitario,
+            tempoEntregaMaximo: tempoEntregaMaximo,
+            tempoEntregaMinimo: tempoEntregaMinimo
+
+            
+        }
+              //Alteração
+       if (idProduto != null) 
+       { 
+            axios.put("http://localhost:8080/api/produto/" + idProduto, produtoRequest)
+            .then((response) => { console.log('Produto alterado com sucesso.') })
+            .catch((error) => { console.log('Erro ao alterar um produto.') })
+        } 
+        //Cadastro
+        else 
+        { 
+            axios.post("http://localhost:8080/api/produto", produtoRequest)
+            .then((response) => { console.log('Produto cadastrado com sucesso.') })
+            .catch((error) => { console.log('Erro ao incluir o produto.') })
+        }
+    }
     return (
         
         <div>
 
             <div style={{marginTop: '3%'}}>
-            <MenuSistema tela={'cliente'} />
+            <MenuSistema tela={'produto'} />
                 <Container textAlign='justified' >
 
-                    <h2> <span style={{color: 'darkgray'}}> Produto &nbsp;<Icon name='angle double right' size="small" /> </span> Cadastro </h2>
+                { idProduto === undefined &&
+                    <h2> <span style={{color: 'darkgray'}}> Produto &nbsp;<Icon name='angle double right' size="small" /> </span> Cadastro</h2>
+                }
+                { idProduto !== undefined &&
+                    <h2> <span style={{color: 'darkgray'}}> Produto &nbsp;<Icon name='angle double right' size="small" /> </span> Alteração</h2>
+                }
 
                     <Divider />
 
@@ -128,7 +182,7 @@ export default function FormProduto () {
                                 color='orange'
                             >
                                 <Icon name='reply' />
-                                Voltar
+                                <Link to={'/list-produto'}>Voltar</Link>
                             </Button>
                                 
                             <Button
@@ -138,6 +192,8 @@ export default function FormProduto () {
                                 labelPosition='left'
                                 color='blue'
                                 floated='right'
+                                onClick={() => salvar()}
+                                
                             >
                                 <Icon name='save' />
                                 Salvar
