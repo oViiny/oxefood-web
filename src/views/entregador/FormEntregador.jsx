@@ -90,6 +90,15 @@ export default function FormEntregador () {
         }
 
     }
+    function formatarData(dataParam) {
+
+        if (dataParam === null || dataParam === '' || dataParam === undefined) {
+            return ''
+        }
+    
+        let arrayData = dataParam.split('-');
+        return arrayData[2] + '/' + arrayData[1] + '/' + arrayData[0];
+    }
 
     
     return (
@@ -169,7 +178,7 @@ export default function FormEntregador () {
                                             mask="99/99/9999" 
                                             maskChar={null}
                                             placeholder="Ex: 20/03/1985"
-                                            value={dataNascimento}
+                                            value={formatarData(dataNascimento)}
                                             onChange={e => setDataNascimento(e.target.value)}
                                         /> 
                                     </Form.Input>
@@ -366,7 +375,7 @@ export default function FormEntregador () {
                                 onClick={() => salvar()}
                             >
                                 <Icon name='save' />
-                                Salvar
+                                <Link to={'/list-produto'}>Salvar</Link>
                             </Button>
 
                         </div>

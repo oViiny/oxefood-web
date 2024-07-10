@@ -174,7 +174,7 @@ const [idCliente, setIdCliente] = useState();
                             onClick={() => salvar()}
                         >
                             <Icon name='save' />
-                                Salvar
+                            <Link to={'/list-produto'}>Salvar</Link>
                         </Button>
 
                         </div>

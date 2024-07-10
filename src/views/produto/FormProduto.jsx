@@ -194,9 +194,12 @@ export default function FormProduto () {
                                 floated='right'
                                 onClick={() => salvar()}
                                 
+                                
                             >
+                                
                                 <Icon name='save' />
-                                Salvar
+                                <Link to={'/list-produto'}>Salvar</Link>
+                                
                             </Button>
 
                         </div>
