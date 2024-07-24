@@ -1,5 +1,6 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
+import {mensagemErro, notifyError, notifySuccess } from '../../views/util/Util';
 import InputMask from 'react-input-mask';
 import { Link, useLocation } from "react-router-dom";
 import { Button, Container, Divider, Form, Icon } from 'semantic-ui-react';
@@ -54,8 +55,14 @@ const [idCliente, setIdCliente] = useState();
         else 
         { 
             axios.post("http://localhost:8080/api/cliente", clienteRequest)
-            .then((response) => { console.log('Cliente cadastrado com sucesso.') })
-            .catch((error) => { console.log('Erro ao incluir o cliente.') })
+            .then((response) => { notifySuccess('Cliente cadastrado com sucesso.')
+            })
+            .catch((error) => { if (error.response) {
+                notifyError(error.response.data.message)
+                } else {
+                notifyError(mensagemErro)
+                } 
+                 })
         }
 
     }

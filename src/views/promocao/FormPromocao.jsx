@@ -1,6 +1,7 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import InputMask from 'react-input-mask';
+import {mensagemErro, notifyError, notifySuccess } from '../../views/util/Util';
 import { Link, useLocation } from "react-router-dom";
 import { Button, Container, Divider, Form, Icon } from 'semantic-ui-react';
 import MenuSistema from '../../MenuSistema';
@@ -54,8 +55,14 @@ export default function FormPromocao () {
         else 
         { 
             axios.post("http://localhost:8080/api/promocao", promocaoRequest)
-            .then((response) => { console.log('Promoção cadastrada com sucesso.') })
-            .catch((error) => { console.log('Erro ao incluir a promoção.') })
+            .then((response) => { notifySuccess('Promoção cadastrada com sucesso.') })
+            .catch((error) => {
+                if (error.response) {
+                    notifyError(error.response.data.message)
+                } else {
+                    notifyError(mensagemErro)
+                } 
+                })
         }
     }
     function formatarData(dataParam) {

@@ -1,6 +1,7 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import InputMask from 'react-input-mask';
+import {mensagemErro, notifyError, notifySuccess } from '../../views/util/Util';
 import { Link, useLocation } from "react-router-dom";
 import { Button, Container, Divider, Form, Icon } from 'semantic-ui-react';
 import MenuSistema from '../../MenuSistema';
@@ -85,8 +86,15 @@ export default function FormEntregador () {
         else 
         { 
             axios.post("http://localhost:8080/api/entregador", entregadorRequest)
-            .then((response) => { console.log('Entregador cadastrado com sucesso.') })
-            .catch((error) => { console.log('Erro ao incluir o entregador.') })
+            .then((response) => { notifySuccess('Entregador cadastrado com sucesso.') })
+            .catch((error) => { 
+                if (error.response) {
+                    notifyError(error.response.data.message)
+                } 
+                else {
+                    notifyError(mensagemErro)
+                } 
+                 })
         }
 
     }
