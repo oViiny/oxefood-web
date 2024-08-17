@@ -5,7 +5,7 @@ export default function Home () {
 
    return(
        <div>
-        <MenuSistema tela={'cliente'} />
+        <MenuSistema tela={'home'} />
            <div style={{marginTop: '5%'}}>
                <Container>
                    <Grid columns={2} divided>
